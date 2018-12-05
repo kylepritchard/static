@@ -4,3 +4,7 @@ shards:
     github: chris-huxtable/front_matter.cr
     version: 0.1.1
 
+  markd:
+    github: icyleaf/markd
+    version: 0.1.1
+
