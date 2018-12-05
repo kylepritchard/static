@@ -11,3 +11,7 @@ targets:
 crystal: 0.27.0
 
 license: MIT
+
+dependencies:
+ front_matter:
+    github: chris-huxtable/front_matter.cr
