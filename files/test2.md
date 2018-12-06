@@ -1,5 +1,5 @@
 ---
-title: This is a test
+title: This is a new test
 tags: One, Two, Three
 author: kyle
 ---

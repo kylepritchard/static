@@ -17,3 +17,5 @@ dependencies:
     github: chris-huxtable/front_matter.cr
   markd:
     github: icyleaf/markd
+  crinja:
+    github: straight-shoota/crinja
