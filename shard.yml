@@ -19,3 +19,5 @@ dependencies:
     github: icyleaf/markd
   crinja:
     github: straight-shoota/crinja
+  kemal:
+    github: kemalcr/kemal

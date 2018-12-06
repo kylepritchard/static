@@ -60,6 +60,10 @@ module Static
       @@data
     end
 
+    def lookup_page(key)
+      @html.lookup_table(key)
+    end
+
     class Post
       @info: Front_Matter
       
@@ -94,7 +98,6 @@ module Static
       def initialize
         @pages = Hash(String, String).new
         render_pages
-        print_hash
       end
 
       private def render_pages
@@ -111,15 +114,26 @@ module Static
       end
 
       private def render_page(post)
-        arguments = Hash(String, String).new 
+        arguments = Hash(String, String | Nil).new 
         arguments["content"] = post.@content
         arguments["title"] = post.@info.title
+        unless post.@info.tags.nil?
+          arguments["tags"] = post.@info.tags 
+        end
+        unless post.@info.date.nil?
+          arguments["date"] = post.@info.date
+        end
         Static::Renderer.render_crinja("index.tpl", arguments)
       end
 
       private def print_hash
         puts @pages
       end
+
+      def lookup_table(key)
+        @pages[key]
+      end
+
     end
   end
 end
