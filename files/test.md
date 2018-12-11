@@ -2,6 +2,7 @@
 title: This is a test
 tags: One, Two, Three
 author: kyle
+date: 11 December 2018
 ---
 
 # this is main title

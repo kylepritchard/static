@@ -4,6 +4,7 @@ require "front_matter"
 # require "markd"
 require "yaml"
 require "markdown"
+require "./front-matter.cr"
 # require "./*"
 
 module Static
@@ -79,15 +80,6 @@ module Static
       def content
         @content
       end
-    end
-
-    class Front_Matter
-      YAML.mapping(
-        title: {type: String, nilable: false},
-        tags: {type: String, nilable: true},
-        author: {type: String, nilable: true},
-        date: {type: String, nilable: true}
-      )
     end
 
     # Start next stage - Convert data to a hash table containing html pages (rendered complete)
