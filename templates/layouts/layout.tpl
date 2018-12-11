@@ -1,15 +1,20 @@
 <html>
 <head>
-<title>{% block page_title %}{% endblock %}</title>
-
-<link rel="stylesheet" href="/styles/default.css">
-<link rel="stylesheet" href="/styles/monokai.css">
-<script src="/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<title>{{ title }}</title>
+{% include "favicon.tpl" %}
+{% include "head-links.tpl" %}
 
 </head>
 
 <body>
-    {% block content %}{% endblock %}
+  <div id="page">
+    <div id="wrapper">
+      {% include "sidebar.tpl" %}
+    
+      <div id="content">
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+  </div>
 </body>
 </html>

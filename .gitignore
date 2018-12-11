@@ -5,3 +5,6 @@
 *.dwarf
 static
 /public/
+/dev/
+sentry
+
