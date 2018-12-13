@@ -1,3 +1,5 @@
+{% include "macros.tpl" %}
+
 <html>
 <head>
 <title>{{ title }}</title>

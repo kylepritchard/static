@@ -5,7 +5,7 @@
 <main id="main">
     <article>
     <a class="post-thumbnail" href="http://nordthemes.com/iceberg/five-tips-how-to-be-creative-and-productive/"></a>
-    <img src="images/sample.png" class="article-image" alt="Five Tips How to Be Creative and Productive">
+    <img src="images/{{ image }}}" class="article-image">
     </a>
     <div class="article-content">
         <header class="article-header">

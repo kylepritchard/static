@@ -115,6 +115,10 @@ module Static
         unless post.@info.date.nil?
           arguments["date"] = post.@info.date
         end
+        unless post.@info.image.nil?
+          arguments["image"] = post.@info.image
+        end
+        
         Static::Renderer.render_crinja("index.tpl", arguments)
       end
 

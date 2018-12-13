@@ -4,7 +4,7 @@ require "crinja"
 CRINJA = Crinja.new
 # CRINJA.cache = Crinja::TemplateCache::NoCache.new
 CRINJA.cache = Crinja::TemplateCache::InMemory.new
-CRINJA.loader = Crinja::Loader::FileSystemLoader.new(["templates/layouts", "templates/pages", "templates/components"])
+CRINJA.loader = Crinja::Loader::FileSystemLoader.new(["templates/layouts", "templates/pages", "templates/components", "templates/utils"])
 
 # module Static
     
