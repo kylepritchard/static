@@ -2,6 +2,7 @@
 title: This is a new test
 tags: One, Two, Three
 author: kyle
+date: 15 Dec 2018
 ---
 
 This is typing normally or as markdown??

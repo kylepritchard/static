@@ -2,8 +2,8 @@
 title: This is a test
 tags: One, Two, Three
 author: kyle
-date: 11 December 2018
-image: "sample.png"
+date: 10 Dec 2018
+image: sample.png
 ---
 
 # this is main title

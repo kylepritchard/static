@@ -6,6 +6,13 @@ CRINJA = Crinja.new
 CRINJA.cache = Crinja::TemplateCache::InMemory.new
 CRINJA.loader = Crinja::Loader::FileSystemLoader.new(["templates/layouts", "templates/pages", "templates/components", "templates/utils"])
 
+# from_epoch = Crinja.filter({attribute: String}) do
+#     Time.unix(arguments["attribute"].to_i).to_s("%-d %m %Y")
+# end
+  
+# CRINJA.filters["time"] = from_epoch
+
+
 # module Static
     
     class Static::Renderer

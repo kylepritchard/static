@@ -65,6 +65,10 @@ module Static
       @html.lookup_table(key)
     end
 
+    def get_index
+      @html
+    end
+
     class Post
       @info: Front_Matter
       
@@ -86,19 +90,25 @@ module Static
 
     class HTML_Table
       @pages : Hash(String, String)
+      @page_array : Array(Hash(String, String | Nil))
 
       def initialize
         @pages = Hash(String, String).new
+        @page_array = Array(Hash(String, String | Nil)).new
         render_pages
       end
 
       private def render_pages
+        # Build each individual page
         Static::Builder.data.each { |post|
           info = post.info
           key = form_key(post.@info.title)
           value = render_page(post)
           @pages[key] = value
         }
+
+        # Build the index page
+        @pages["index"] = render_index()
       end
 
       private def form_key(title)
@@ -106,20 +116,38 @@ module Static
       end
 
       private def render_page(post)
-        arguments = Hash(String, String | Nil).new 
-        arguments["content"] = post.@content
-        arguments["title"] = post.@info.title
-        unless post.@info.tags.nil?
-          arguments["tags"] = post.@info.tags 
-        end
-        unless post.@info.date.nil?
-          arguments["date"] = post.@info.date
-        end
-        unless post.@info.image.nil?
-          arguments["image"] = post.@info.image
-        end
-        
-        Static::Renderer.render_crinja("index.tpl", arguments)
+          arguments = Hash(String, String | Nil).new
+          arguments["content"] = post.@content
+          arguments["title"] = post.@info.title
+          arguments["url"] = form_key(post.@info.title)
+          
+          # tags = "none"
+          # if post.@info.tags.nil? == false
+          #   tags = post.@info.tags
+          # end
+          arguments["tags"] = post.@info.tags.to_s
+          
+          arguments["date"] = post.@info.date.to_s
+          # if post.@info.date.nil? == false 
+          #   puts "date exists"
+          #   date = post.@info.date.to_s
+          # end
+          arguments["epoch"] = Time.parse(post.@info.date.to_s, "%-d %b %Y", Time::Location.local).to_unix.to_s
+          
+          unless post.@info.image.nil?
+            arguments["image"] = post.@info.image
+          end
+
+          @page_array << arguments
+         
+          Static::Renderer.render_crinja("post.tpl", arguments)
+
+      end
+
+      private def render_index
+        # Sort the posts array into dates (use to_s to avoid sorting on Nil)
+        data = { "posts" => @page_array.sort_by!{ |post| post["epoch"].to_s }.reverse! }
+        Static::Renderer.render_crinja("index.tpl", data)
       end
 
       private def print_hash
